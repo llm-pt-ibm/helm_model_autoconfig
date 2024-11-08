@@ -50,7 +50,7 @@ helm_model_autoconfig --model_urls "https://huggingface.co/ibm-granite/granite-3
 
 This command will:
 - Fetch information for each model URL provided.
-- Add metadata tags `language_model` and `NLP` to the `model_metadata.yaml`.
+- Add metadata tags `TEXT_MODEL_TAG` and `PARTIAL_FUNCTIONALITY_TEXT_MODEL_TAG` to the `model_metadata.yaml`.
 - Save both `model_metadata.yaml` and `model_deployments.yaml` to `/path/to/output`.
 
 ## YAML File Structure
