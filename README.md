@@ -15,8 +15,8 @@
 
 1. Clone the repository:
     ```bash
-    git clone https://github.com/yourusername/huggingface_cli_tool.git
-    cd huggingface_cli_tool
+    git clone https://github.com/llm-pt-ibm/helm_model_autoconfig
+    cd helm_model_autoconfig
     ```
 
 2. Install the package:
@@ -106,4 +106,4 @@ This project is licensed under the MIT License.
 
 ## Contact
 
-For issues or feature requests, please [open an issue](https://github.com/yourusername/huggingface_cli_tool/issues) on the GitHub repository.
+For issues or feature requests, please [open an issue](https://github.com/llm-pt-ibm/helm_model_autoconfig/issues) on the GitHub repository.
