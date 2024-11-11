@@ -6,7 +6,7 @@
 ## Features
 
 - Fetch model information from Hugging Face.
-- Generate `model_metadata.yaml`, `model_deployments.yaml` and tokenizer_configs.yaml files with HELM-compatible format.
+- Generate `model_metadata.yaml`, `model_deployments.yaml` and `tokenizer_configs.yaml` files with HELM-compatible format.
 - Support multiple models in a single run.
 - Customizable output path for generated YAML files.
 - Metadata tags for additional categorization.
