@@ -7,6 +7,7 @@ from huggingface_tool.yaml_writer import (
 )
 import os
 
+
 def main():
     parser = argparse.ArgumentParser(
         description="Fetch model info from Hugging Face and write metadata to YAML for multiple models."
@@ -34,13 +35,15 @@ def main():
         "--prefix_token",
         type=str,
         default="",
-        help="The prefix token for the tokenizer"
+        required=False,
+        help="The prefix token for the tokenizer",
     )
     parser.add_argument(
         "end_of_text_token",
         type=str,
         default="",
-        help="The end of text token for the tokenizer"
+        required=False,
+        help="The end of text token for the tokenizer",
     )
 
     args = parser.parse_args()
@@ -72,7 +75,7 @@ def main():
                 model_info["max_sequence_length"],
                 output_path=args.output_path,
             )
-            
+
             write_tokenizer_configs_to_yaml(
                 model_info["repo_name"],
                 args.prefix_token,
