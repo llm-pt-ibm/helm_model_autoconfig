@@ -2,7 +2,13 @@ import requests
 from bs4 import BeautifulSoup
 
 
-def get_huggingface_model_info(model_url):
+def get_huggingface_model_info(model_url) -> dict:
+    """ 
+    Retrieve model information from the Hugging Face model page.
+    
+    Args:
+        model_url (str): The URL of the Hugging Face model page.
+    """
     try:
         response = requests.get(model_url)
         response.raise_for_status()

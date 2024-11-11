@@ -3,9 +3,9 @@ from huggingface_tool.model_info import get_huggingface_model_info
 from huggingface_tool.yaml_writer import (
     write_model_deployment_to_yaml,
     write_model_metadata_to_yaml,
+    write_tokenizer_configs_to_yaml,
 )
 import os
-
 
 def main():
     parser = argparse.ArgumentParser(
@@ -29,6 +29,18 @@ def main():
         type=str,
         default=".",
         help="Directory to save the generated YAML files",
+    )
+    parser.add_argument(
+        "--prefix_token",
+        type=str,
+        default="",
+        help="The prefix token for the tokenizer"
+    )
+    parser.add_argument(
+        "end_of_text_token",
+        type=str,
+        default="",
+        help="The end of text token for the tokenizer"
     )
 
     args = parser.parse_args()
@@ -58,6 +70,13 @@ def main():
             write_model_deployment_to_yaml(
                 model_info["repo_name"],
                 model_info["max_sequence_length"],
+                output_path=args.output_path,
+            )
+            
+            write_tokenizer_configs_to_yaml(
+                model_info["repo_name"],
+                args.prefix_token,
+                args.end_of_text_token,
                 output_path=args.output_path,
             )
             print(f"YAML files generated for {model_url} in {args.output_path}")
