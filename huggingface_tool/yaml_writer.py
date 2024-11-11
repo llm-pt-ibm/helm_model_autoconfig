@@ -73,7 +73,7 @@ def write_model_deployment_to_yaml(
         client_spec:
             class_name: "helm.clients.huggingface_client.HuggingFaceClient"
             args:
-            pretrained_model_name_or_path: {hf_repo}
+                pretrained_model_name_or_path: {hf_repo}
 """
 
     deployment_file_path = os.path.join(output_path, "model_deployments.yaml")
@@ -108,12 +108,12 @@ def write_tokenizer_configs_to_yaml(
     tokenizer_configs = f"""
     -   name: {hf_repo}
         tokenizer_spec:
-        class_name: "helm.tokenizers.huggingface_tokenizer.HuggingFaceTokenizer"
-        args:
-            pretrained_model_name_or_path: {hf_repo}
+            class_name: "helm.tokenizers.huggingface_tokenizer.HuggingFaceTokenizer"
+            args:
+                pretrained_model_name_or_path: {hf_repo}
         end_of_text_token: "{end_of_text_token}"
         prefix_token: "{prefix_token}"
-    """
+"""
 
     # Define the output file path
     tokenizer_file_path = os.path.join(output_path, "tokenizer_configs.yaml")
