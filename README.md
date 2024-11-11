@@ -6,7 +6,7 @@
 ## Features
 
 - Fetch model information from Hugging Face.
-- Generate `model_metadata.yaml` and `model_deployments.yaml` files with HELM-compatible format.
+- Generate `model_metadata.yaml`, `model_deployments.yaml` and tokenizer_configs.yaml files with HELM-compatible format.
 - Support multiple models in a single run.
 - Customizable output path for generated YAML files.
 - Metadata tags for additional categorization.
@@ -38,6 +38,8 @@ helm_model_autoconfig --model_urls <model_url1> <model_url2> ... --tags <tag1> <
 
 - `--model_urls` (**required**): A list of Hugging Face model URLs to be processed.
 - `--tags` (*optional*): Tags to be included in the model metadata (default: `["TEXT_MODEL_TAG"]`). You can see tags [here](https://crfm-helm.readthedocs.io/en/latest/adding_new_models/#model-metadata).
+- `--prefix_token` (*optional*): The prefix token for the tokenizer (default: "").
+- `end_of_text_token` (*optional*): The end of text token for the tokenizer (default: "").
 - `--output_path` (*optional*): Directory to save the generated YAML files (default: current directory `.`).
 
 ### Example Usage
@@ -94,6 +96,20 @@ model_deployments:
         class_name: "helm.clients.huggingface_client.HuggingFaceClient"
         args:
         pretrained_model_name_or_path: ibm-granite/granite-3.0-8b-base
+```
+
+### tokenizer_configs.yaml
+
+```yaml
+tokenizer_configs:
+
+    - name: ibm-granite/granite-3.0-2b-base
+        tokenizer_spec:
+          class_name: "helm.tokenizers.huggingface_tokenizer.HuggingFaceTokenizer"
+          args:
+            pretrained_model_name_or_path: ibm-granite/granite-3.0-2b-base
+        end_of_text_token: "<|endoftext|>"
+        prefix_token: "<|endoftext|>"
 ```
 
 ## Development and Contribution
