@@ -35,14 +35,12 @@ def main():
         "--prefix_token",
         type=str,
         default="",
-        required=False,
         help="The prefix token for the tokenizer",
     )
     parser.add_argument(
-        "end_of_text_token",
+        "--end_of_text_token",
         type=str,
         default="",
-        required=False,
         help="The end of text token for the tokenizer",
     )
 
