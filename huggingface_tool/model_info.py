@@ -28,7 +28,7 @@ def get_huggingface_model_info(model_url) -> dict:
             description = tag.get_text(strip=True).replace("Model Summary:", "").strip()
             break
 
-    release_date = None
+    formatted_date = None
     for tag in soup.find_all("li"):
         strong_tag = tag.find("strong")
         if strong_tag and "Release Date" in strong_tag.get_text():
@@ -46,7 +46,7 @@ def get_huggingface_model_info(model_url) -> dict:
                 parsed_date = datetime.strptime(release_date, "%B %d, %Y")
                 formatted_date = parsed_date.strftime("%Y-%m-%d")
             except ValueError:
-                formatted_date = release_date
+                formatted_date = release_date if release_date else None
             break
 
     max_sequence_length = None
